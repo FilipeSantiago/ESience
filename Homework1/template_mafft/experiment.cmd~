@@ -1,0 +1,4 @@
+#!/bin/bash
+perl %=WFDIR%/bin/numberFasta.pl %=FASTA_FILE% > `basename %=FASTA_FILE%`.fastaNumbered
+/home/bbspock/Mafft/bin/mafft `basename %=FASTA_FILE%`.fastaNumbered > `basename %=FASTA_FILE%`.mafft
+

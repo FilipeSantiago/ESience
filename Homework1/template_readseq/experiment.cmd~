@@ -1,0 +1,1 @@
+java -jar readseq.jar -all -f=12 NAME.mafft -o NAME.phylip

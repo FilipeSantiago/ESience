@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar modelgenerator.jar NAME.phylip 6 > NAME.mg

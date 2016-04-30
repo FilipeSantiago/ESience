@@ -5,28 +5,28 @@
 	<database name="scc" username="postgres" password="teste" port="5432" server="localhost"/>
 	<conceptualWorkflow tag="homework1" description="LoL">
 
-        <activity tag="mafft" type="MAP" template="%=WFDIR%/template_mafft" activation="./experiment.cmd" description="align with mafft">
+        <activity tag="mafft" type="MAP" template="%=WFDIR%/template_mafft" activation="%=WFDIR%/template_mafft/experiment.cmd" description="align with mafft">
                 <relation reltype="Input" name="fastaFile"/>
                 <relation reltype="Output" name="omafft"/>
                 <field name="ID" type="float" input="fastaFile" output="omafft" decimalplaces="0"/>
                 <field name="FILE" type="file" input="fastaFile" output="omafft"/>
         </activity>
 
-        <activity tag="readseq" type="MAP" template="%=WFDIR%/template_readseq" activation="./experiment.cmd" description="align with mafft">
+        <activity tag="readseq" type="MAP" template="%=WFDIR%/template_readseq" activation="%=WFDIR%/experiment.cmd" description="align with mafft">
                 <relation reltype="Input" dependency="mafft"/>
                 <relation reltype="Output" name="oreadseq"/>
                 <field name="ID" type="float" input="fastaFile" output="oreadseq" decimalplaces="0"/>
                 <field name="FILE" type="file" input="fastaFile" output="oreadseq"/>
         </activity>
 
-        <activity tag="ModelGenerator" type="MAP" template="%=WFDIR%/template_modelgenerator" activation="./experiment.cmd" description="">
+        <activity tag="ModelGenerator" type="MAP" template="%=WFDIR%/template_modelgenerator" activation="%=WFDIR%/experiment.cmd" description="">
                 <relation reltype="Input" dependency="readseq"/>
                 <relation reltype="Output" name="omodelgenerator" />
                 <field name="ID" type="float" output="omodelgenerator" decimalplaces="0"/>
                 <field name="FILE" type="file" output="omodelgenerator"/>
         </activity>
 
-        <activity tag="raxml" type="MAP" template="%=WFDIR%/template_raxml" activation="./experiment.cmd" description="">
+        <activity tag="raxml" type="MAP" template="%=WFDIR%/template_raxml" activation="%=WFDIR%/experiment.cmd" description="">
                 <relation reltype="Input" dependency="readseq"/>
                 <relation reltype="Output" name="oraxml" />
                 <field name="ID" type="float" output="oraxml" decimalplaces="0"/>
